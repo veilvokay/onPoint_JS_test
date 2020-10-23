@@ -68,8 +68,34 @@ function abcdef(a,b,c,d,e,f) {
 
 abcdef.curry = abc.curryMeDaddy.apply(abcdef);
 console.log(abcdef.curry(1,2,3,4,5,6));
-console.log(abcdef.curry(1,2)(3,4,5,6));
+console.log(abcdef.curry('a','v')('c','s','a','q'));
 console.log(abcdef.curry(1,2)(3,4)(5,6));
 
 
 
+// 3.Что можно улучшить? Как бы вы переписали функцию drawRating при условии что на вход функции drawRating должна приходить переменная vote, содержащая значение от 0 до 100. Интересует именно логика реализации функции, не визуальное отображение звезд.
+
+function drawRating(vote) {
+    if (vote >= 0 && vote <= 20) {
+        return '★☆☆☆☆';
+    }
+    else if (vote > 20 && vote <= 40) {
+        return '★★☆☆☆';
+    }
+    else if (vote > 40 && vote <= 60) {
+        return '★★★☆☆';
+    }
+    else if (vote > 60 && vote <= 80) {
+        return '★★★★☆';
+    }
+    else if (vote > 80 && vote <= 100) {
+        return '★★★★★';
+    }
+}
+
+
+
+function newDrawRate(vote) {
+    let stars = (vote != 0) ? Math.ceil(vote/20) : 1
+    return Array(stars + 1).join("★") + Array(6-stars).join("☆");
+}
